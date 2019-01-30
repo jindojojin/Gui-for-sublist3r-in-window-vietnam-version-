@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Wed Jan 30 17:50:42 2019
+** Created: Wed Jan 30 19:25:05 2019
 **      by: Qt User Interface Compiler version 4.4.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -15,10 +15,10 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QGridLayout>
-#include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenuBar>
+#include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QStatusBar>
 #include <QtGui/QTableView>
@@ -35,7 +35,7 @@ public:
     QPushButton *pushButton;
     QLineEdit *lineEdit;
     QTableView *tableView;
-    QLabel *label;
+    QProgressBar *progressBar;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -68,12 +68,16 @@ public:
     tableView = new QTableView(centralWidget);
     tableView->setObjectName(QString::fromUtf8("tableView"));
 
-    gridLayout->addWidget(tableView, 2, 0, 1, 2);
+    gridLayout->addWidget(tableView, 4, 0, 1, 2);
 
-    label = new QLabel(centralWidget);
-    label->setObjectName(QString::fromUtf8("label"));
+    progressBar = new QProgressBar(centralWidget);
+    progressBar->setObjectName(QString::fromUtf8("progressBar"));
+    progressBar->setMinimum(0);
+    progressBar->setValue(100);
+    progressBar->setTextVisible(false);
+    progressBar->setFormat(QString::fromUtf8(""));
 
-    gridLayout->addWidget(label, 1, 0, 1, 1);
+    gridLayout->addWidget(progressBar, 1, 0, 1, 2);
 
     MainWindow->setCentralWidget(centralWidget);
     menuBar = new QMenuBar(MainWindow);
@@ -106,7 +110,6 @@ public:
 #endif // QT_NO_TOOLTIP
 
     lineEdit->setText(QString());
-    label->setText(QString());
     Q_UNUSED(MainWindow);
     } // retranslateUi
 

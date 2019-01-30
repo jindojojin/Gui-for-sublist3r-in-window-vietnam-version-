@@ -20,7 +20,7 @@ public:
 public slots:
     void on_pushButton_clicked();
     void runstatus(QStringList);
-    void runto100(int,QProcess::ExitStatus);
+    void runto100();
 private:
     Ui::MainWindow *ui;
     void setupTable();
@@ -29,6 +29,8 @@ private:
 signals:
     void findSublist(QString);
 
+private slots:
+    void on_lineEdit_editingFinished();
 };
 
 #endif // MAINWINDOW_H

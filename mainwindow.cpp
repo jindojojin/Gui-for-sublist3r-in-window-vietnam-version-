@@ -20,12 +20,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setupTable();
 
-    QMovie *movie = new QMovie(QDir::currentPath()+"/loading.gif");
-    this->ui->label->setMovie(movie);
+//    QMovie *movie = new QMovie(QDir::currentPath()+"/loading.gif");
+//    this->ui->label->setMovie(movie);
 
-    movie->start();
+//    movie->start();
 
-    this->ui->label->hide();
+//    this->ui->label->hide();
 }
 
 MainWindow::~MainWindow()
@@ -33,8 +33,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 void MainWindow::runstatus(QStringList l){
-    this->ui->label->hide();
-    this->ui->tableView->show();
+//    this->ui->label->hide();
+   this->ui->progressBar->setValue(100);
+//    this->ui->tableView->show();
     if(l.empty()){
         QMessageBox::information(
             this,
@@ -47,9 +48,12 @@ void MainWindow::runstatus(QStringList l){
     a.append(new QStandardItem(l.at(i).trimmed()));
     this->model->appendRow(a);
     }
+//    timer->stop();
+    //delete timer;
 }
-void MainWindow::runto100(int time,QProcess::ExitStatus status){
-    qDebug()<<status;
+void MainWindow::runto100(){
+    this->ui->progressBar->setValue(this->ui->progressBar->value()+1);
+
 }
 
 void MainWindow::setupTable(){
@@ -65,8 +69,12 @@ void MainWindow::setupTable(){
 }
 void MainWindow::on_pushButton_clicked()
 {
-    this->ui->label->show();
-    this->ui->tableView->hide();
+//    this->ui->label->show();
+    this->ui->progressBar->setValue(0);
+    QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(runto100()));
+        timer->start(700);
+//    this->ui->tableView->hide();
     this->model->clear();
     model->setHorizontalHeaderItem(0,new QStandardItem(QString::fromUtf8("Kết quả")));
         this->ui->tableView->setColumnWidth(0,700);
@@ -79,8 +87,14 @@ void MainWindow::on_pushButton_clicked()
             this,
             QString::fromUtf8("Lỗi"),
                     QString::fromUtf8("Không tìm thấy tên miền con nào của ' ")+this->domain+" '");
-        this->ui->label->hide();
+//        this->ui->label->hide();
         this->ui->tableView->show();
     }
 
+}
+
+void MainWindow::on_lineEdit_editingFinished()
+{
+    if(this->ui->lineEdit->text()!=this->domain)
+    this->on_pushButton_clicked();
 }

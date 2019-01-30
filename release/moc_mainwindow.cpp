@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Wed Jan 30 19:02:28 2019
+** Created: Wed Jan 30 19:31:23 2019
 **      by: The Qt Meta Object Compiler version 59 (Qt 4.4.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        1,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   10, // methods
+       5,   10, // methods
        0,    0, // properties
        0,    0, // enums/sets
 
@@ -33,7 +33,8 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: signature, parameters, type, tag, flags
       33,   11,   11,   11, 0x0a,
       57,   11,   11,   11, 0x0a,
-      82,   80,   11,   11, 0x0a,
+      80,   11,   11,   11, 0x0a,
+      91,   11,   11,   11, 0x08,
 
        0        // eod
 };
@@ -41,7 +42,7 @@ static const uint qt_meta_data_MainWindow[] = {
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0findSublist(QString)\0"
     "on_pushButton_clicked()\0runstatus(QStringList)\0"
-    ",\0runto100(int,QProcess::ExitStatus)\0"
+    "runto100()\0on_lineEdit_editingFinished()\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -72,9 +73,10 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: findSublist((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: on_pushButton_clicked(); break;
         case 2: runstatus((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
-        case 3: runto100((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QProcess::ExitStatus(*)>(_a[2]))); break;
+        case 3: runto100(); break;
+        case 4: on_lineEdit_editingFinished(); break;
         }
-        _id -= 4;
+        _id -= 5;
     }
     return _id;
 }
